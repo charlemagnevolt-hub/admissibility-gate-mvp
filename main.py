@@ -1,0 +1,39 @@
+import json
+import sys
+from pathlib import Path
+
+from control.admissibility import evaluate_admissibility
+from control.ledger import write_ledger_entry
+from actions.send_email import execute_send_email
+
+
+def load_action(path: str) -> dict:
+    with open(path, "r", encoding="utf-8") as file:
+        return json.load(file)
+
+
+def main() -> None:
+    if len(sys.argv) < 2:
+        print("Usage: python main.py examples/email_external_sensitive.json")
+        sys.exit(1)
+
+    action_path = sys.argv[1]
+    action = load_action(action_path)
+
+    decision = evaluate_admissibility(action)
+
+    print(f"Decision: {decision['decision']}")
+    print(f"Reason: {decision['reason']}")
+
+    if decision["decision"] == "ALLOW":
+        result = execute_send_email(action)
+        print(result)
+    else:
+        print("Action was not executed.")
+
+    write_ledger_entry(action, decision)
+    print("Ledger entry written.")
+
+
+if __name__ == "__main__":
+    main()
