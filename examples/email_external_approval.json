@@ -1,0 +1,9 @@
+{
+  "type": "send_email",
+  "recipient": "client@example.com",
+  "recipient_type": "external",
+  "subject": "Approved customer update",
+  "contains_sensitive_data": true,
+  "risk_level": "medium",
+  "approved_by_human": true
+}
