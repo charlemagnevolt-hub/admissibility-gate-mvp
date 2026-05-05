@@ -1,0 +1,9 @@
+{
+  "type": "send_email",
+  "recipient": "team@company.local",
+  "recipient_type": "internal",
+  "subject": "Internal meeting notes",
+  "contains_sensitive_data": false,
+  "risk_level": "low",
+  "approved_by_human": false
+}
