@@ -1,10 +1,14 @@
-# Admissibility Gate MVP
+# Runtime Admissibility Gate MVP - Control Before Consequence
 
 A minimal runtime gate that decides whether an AI-initiated action may execute.
 
 The goal is simple:
 
 > No consequential action should execute before admissibility is resolved.
+> 
+> The focus is not on whether an agent can act, but on whether a proposed 
+> action should be allowed to become consequential. 
+
 
 This project demonstrates a small control layer between an AI agent and a real-world action.
 
@@ -22,7 +26,7 @@ They can:
 - call APIs
 - trigger workflows
 
-Most systems validate, observe, or audit after something happened.
+Most systems validate, observe, or audit after an action has already occurred.
 
 This MVP focuses on the moment before execution.
 
@@ -118,6 +122,27 @@ Admissibility Gate
    v
 Ledger Record
 ```
+
+
+## Formal Model
+
+Runtime admissibility can be represented as:
+
+```
+Adm(s, a, C) ∈ {ALLOW, BLOCK, REQUIRE_APPROVAL}
+
+Execution is permitted only if:
+
+execute(a) ⇔ Adm(s,a,C) = ALLOW
+```
+
+where:
+
+s denotes the current system state
+a denotes the proposed action
+C denotes the applicable constraint set
+
+The admissibility function is evaluated before an action is allowed to cause an external state transition.
 
 
 
@@ -230,10 +255,22 @@ Ledger entry written.
 ```
 
 
+## Relation to SAFER 2026
+
+This MVP accompanies the SAFER 2026 workshop paper:
+
+Control Before Consequence:
+Reframing Infrastructure and Governance for Agentic AI Systems
+
+The prototype demonstrates a minimal execution-control boundary between an AI agent and externally consequential actions.
+
+
 
 ## Status
 
-Experimental MVP.
+Experimental research MVP.
+
+This prototype is intended to demonstrate the execution-control boundary and is not designed as a production-ready safety system.
 
 The purpose is not to build a complete AI safety product yet.
 
