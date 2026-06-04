@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "timestamp": "2026-05-06T13:49:57.910093+00:00",
+    "action": {
+      "type": "send_email",
+      "recipient": "client@example.com",
+      "recipient_type": "external",
+      "subject": "Customer contract update",
+      "contains_sensitive_data": true,
+      "risk_level": "medium",
+      "approved_by_human": false
+    },
+    "decision": {
+      "decision": "REQUIRE_APPROVAL",
+      "reason": "External email contains sensitive data and has no human approval."
+    }
+  }
+]
