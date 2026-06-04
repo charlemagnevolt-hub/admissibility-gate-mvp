@@ -14,5 +14,72 @@
       "decision": "REQUIRE_APPROVAL",
       "reason": "External email contains sensitive data and has no human approval."
     }
+  },
+  {
+    "timestamp": "2026-06-04T21:05:49.803264+00:00",
+    "action_type": "send_email",
+    "recipient": "team@company.local",
+    "decision": "ALLOW",
+    "reason": "Action is admissible under current policy.",
+    "policy_version": "1.0",
+    "raw_action": {
+      "type": "send_email",
+      "recipient": "team@company.local",
+      "recipient_type": "internal",
+      "subject": "Internal meeting notes",
+      "contains_sensitive_data": false,
+      "risk_level": "low",
+      "approved_by_human": false
+    }
+  },
+  {
+    "timestamp": "2026-06-04T21:08:50.448128+00:00",
+    "action_type": "send_email",
+    "recipient": "client@example.com",
+    "decision": "REQUIRE_APPROVAL",
+    "reason": "External email contains sensitive data and has no human approval.",
+    "policy_version": "1.0",
+    "raw_action": {
+      "type": "send_email",
+      "recipient": "client@example.com",
+      "recipient_type": "external",
+      "subject": "Customer contract update",
+      "contains_sensitive_data": true,
+      "risk_level": "medium",
+      "approved_by_human": false
+    }
+  },
+  {
+    "timestamp": "2026-06-04T21:09:16.262105+00:00",
+    "action_type": "send_email",
+    "recipient": "client@example.com",
+    "decision": "ALLOW",
+    "reason": "Action is admissible under current policy.",
+    "policy_version": "1.0",
+    "raw_action": {
+      "type": "send_email",
+      "recipient": "client@example.com",
+      "recipient_type": "external",
+      "subject": "Approved customer update",
+      "contains_sensitive_data": true,
+      "risk_level": "medium",
+      "approved_by_human": true
+    }
+  },
+  {
+    "timestamp": "2026-06-04T21:09:30.751343+00:00",
+    "action_type": "send_email",
+    "recipient": null,
+    "decision": "BLOCK",
+    "reason": "Missing recipient.",
+    "policy_version": "1.0",
+    "raw_action": {
+      "type": "send_email",
+      "recipient": null,
+      "recipient_type": "external",
+      "subject": "Missing recipient test",
+      "contains_sensitive_data": false,
+      "approved_by_human": false
+    }
   }
 ]
