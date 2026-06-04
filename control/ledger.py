@@ -11,8 +11,12 @@ def write_ledger_entry(action: dict, decision: dict) -> None:
 
     entry = {
         "timestamp": datetime.now(timezone.utc).isoformat(),
-        "action": action,
-        "decision": decision
+        "action_type": action.get("type"),
+        "recipient": action.get("recipient"),
+        "decision": decision.get("decision"),
+        "reason": decision.get("reason"),
+        "policy_version": "1.0",
+        "raw_action": action
     }
 
     if LEDGER_PATH.exists():
