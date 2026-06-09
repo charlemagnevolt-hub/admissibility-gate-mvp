@@ -107,5 +107,98 @@
       "record_id": "customer-999",
       "risk_level": "high"
     }
+  },
+  {
+    "timestamp": "2026-06-09T22:31:42.315863+00:00",
+    "action_type": "send_email",
+    "recipient": "team@company.local",
+    "decision": "ALLOW",
+    "reason": "Action is admissible under current policy.",
+    "policy_version": "1.0",
+    "raw_action": {
+      "type": "send_email",
+      "recipient": "team@company.local",
+      "recipient_type": "internal",
+      "subject": "Internal meeting notes",
+      "contains_sensitive_data": false,
+      "risk_level": "low",
+      "approved_by_human": false
+    }
+  },
+  {
+    "timestamp": "2026-06-09T22:31:42.424686+00:00",
+    "action_type": "send_email",
+    "recipient": "client@example.com",
+    "decision": "REQUIRE_APPROVAL",
+    "reason": "External email contains sensitive data and has no human approval.",
+    "policy_version": "1.0",
+    "raw_action": {
+      "type": "send_email",
+      "recipient": "client@example.com",
+      "recipient_type": "external",
+      "subject": "Customer contract update",
+      "contains_sensitive_data": true,
+      "risk_level": "medium",
+      "approved_by_human": false
+    }
+  },
+  {
+    "timestamp": "2026-06-09T22:31:42.522128+00:00",
+    "action_type": "send_email",
+    "recipient": "client@example.com",
+    "decision": "ALLOW",
+    "reason": "Action is admissible under current policy.",
+    "policy_version": "1.0",
+    "raw_action": {
+      "type": "send_email",
+      "recipient": "client@example.com",
+      "recipient_type": "external",
+      "subject": "Approved customer update",
+      "contains_sensitive_data": true,
+      "risk_level": "medium",
+      "approved_by_human": true
+    }
+  },
+  {
+    "timestamp": "2026-06-09T22:31:42.614083+00:00",
+    "action_type": "send_email",
+    "recipient": null,
+    "decision": "BLOCK",
+    "reason": "Missing recipient.",
+    "policy_version": "1.0",
+    "raw_action": {
+      "type": "send_email",
+      "recipient": null,
+      "recipient_type": "external",
+      "subject": "Missing recipient test",
+      "contains_sensitive_data": false,
+      "approved_by_human": false
+    }
+  },
+  {
+    "timestamp": "2026-06-09T22:31:42.703351+00:00",
+    "action_type": "update_record",
+    "recipient": null,
+    "decision": "ALLOW",
+    "reason": "Record update admissible.",
+    "policy_version": "1.0",
+    "raw_action": {
+      "type": "update_record",
+      "record_id": "customer-123",
+      "risk_level": "low"
+    }
+  },
+  {
+    "timestamp": "2026-06-09T22:31:47.619336+00:00",
+    "action_type": "update_record",
+    "recipient": null,
+    "decision": "REQUIRE_APPROVAL",
+    "reason": "High-risk record update requires approval.",
+    "policy_version": "1.0",
+    "raw_action": {
+      "type": "update_record",
+      "record_id": "customer-999",
+      "risk_level": "high"
+    }
   }
 ]
