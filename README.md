@@ -86,15 +86,29 @@ Only allowed actions are executed.
 
 All decisions are recorded in a simple ledger.
 
+The MVP currently includes two reference action types:
+
+- `send_email`
+- `update_record`
+
+Both action types pass through the same admissibility gate.
 
 
-## First Use Case
 
-The first demo uses email because it is simple and easy to understand.
+## Reference Applications
 
-Email is not the product.
+The current MVP includes two reference applications:
 
-Email is the demonstration of the control point.
+- email execution
+- record update
+
+Email demonstrates control over external communication.
+
+Record update demonstrates control over state modification.
+
+Neither application is the product.
+
+Both applications demonstrate the admissibility control point.
 
 
 
@@ -218,6 +232,7 @@ Without this gate, a system may still be fully observable, auditable, and policy
 This MVP implements:
 
 - email actions
+- record update actions
 - simple policy checks
 - runtime decisioning
 - decision logging
@@ -279,6 +294,38 @@ Reason: Action is admissible under current policy.
 Email sent to team@company.local with subject: Internal meeting notes
 Ledger entry written.
 ```
+
+
+Run a safe record update:
+
+```bash
+python main.py examples/update_record.json
+```
+
+Expected result:
+
+```text
+Decision: ALLOW
+Reason: Record update admissible.
+Record customer-123 updated.
+Ledger entry written.
+```
+
+Run a high-risk record update:
+
+```bash
+python main.py examples/update_record_high_risk.json
+```
+
+Expected result:
+
+```text
+Decision: REQUIRE_APPROVAL
+Reason: High-risk record update requires approval.
+Action was not executed.
+Ledger entry written.
+```
+
 
 
 ## Relation to SAFER 2026
