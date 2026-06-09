@@ -1,0 +1,5 @@
+{
+  "type": "update_record",
+  "record_id": "customer-999",
+  "risk_level": "high"
+}

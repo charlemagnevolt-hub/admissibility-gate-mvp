@@ -1,15 +1,27 @@
 import json
 import sys
-from pathlib import Path
 
 from control.admissibility import evaluate_admissibility
 from control.ledger import write_ledger_entry
 from actions.send_email import execute_send_email
+from actions.update_record import execute_update_record
 
 
 def load_action(path: str) -> dict:
     with open(path, "r", encoding="utf-8") as file:
         return json.load(file)
+
+
+def execute_action(action: dict) -> str:
+    action_type = action.get("type")
+
+    if action_type == "send_email":
+        return execute_send_email(action)
+
+    if action_type == "update_record":
+        return execute_update_record(action)
+
+    return f"Unsupported action type: {action_type}"
 
 
 def main() -> None:
@@ -26,7 +38,7 @@ def main() -> None:
     print(f"Reason: {decision['reason']}")
 
     if decision["decision"] == "ALLOW":
-        result = execute_send_email(action)
+        result = execute_action(action)
         print(result)
     else:
         print("Action was not executed.")

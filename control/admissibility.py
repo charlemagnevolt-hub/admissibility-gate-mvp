@@ -1,4 +1,5 @@
 from control.policy import evaluate_email_policy
+from control.update_record_policy import evaluate_update_record_policy
 
 
 def evaluate_admissibility(action: dict) -> dict:
@@ -6,6 +7,9 @@ def evaluate_admissibility(action: dict) -> dict:
 
     if action_type == "send_email":
         return evaluate_email_policy(action)
+
+    if action_type == "update_record":
+        return evaluate_update_record_policy(action)
 
     return {
         "decision": "BLOCK",
