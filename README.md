@@ -1,6 +1,32 @@
 # Runtime Admissibility Gate MVP - Control Before Consequence
 
-A minimal runtime gate that decides whether an AI-initiated action may execute.
+
+
+## Positioning
+
+This repository implements the technical reference layer of the Control Before Consequence framework.
+
+```text
+Control Before Consequence
+        ↓
+Runtime Admissibility
+        ↓
+Admissibility Gate MVP
+        ↓
+Reference Applications
+```
+
+Control Before Consequence defines the governing principle.
+
+Runtime Admissibility defines the decision problem:
+
+> May a proposed action become consequential under the current constraints?
+
+The Admissibility Gate MVP provides a reference implementation of that decision process.
+
+
+A minimal runtime admissibility gate that evaluates whether an AI-initiated action may become
+consequential before execution.
 
 The goal is simple:
 
@@ -138,9 +164,9 @@ execute(a) ⇔ Adm(s,a,C) = ALLOW
 
 where:
 
-s denotes the current system state
-a denotes the proposed action
-C denotes the applicable constraint set
+- s denotes the current system state
+- a denotes the proposed action
+- C denotes the applicable constraint set
 
 The admissibility function is evaluated before an action is allowed to cause an external state transition.
 
