@@ -1,0 +1,6 @@
+{
+  "type": "call_api",
+  "endpoint": "/v1/payment/execute",
+  "risk_level": "high",
+  "constraint_set": "default"
+}

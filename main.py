@@ -5,6 +5,7 @@ from control.admissibility import evaluate_admissibility
 from control.ledger import write_ledger_entry
 from actions.send_email import execute_send_email
 from actions.update_record import execute_update_record
+from actions.call_api import execute_call_api
 
 
 def load_action(path: str) -> dict:
@@ -20,6 +21,9 @@ def execute_action(action: dict) -> str:
 
     if action_type == "update_record":
         return execute_update_record(action)
+
+    if action_type == "call_api":
+        return execute_call_api(action)
 
     return f"Unsupported action type: {action_type}"
 

@@ -76,3 +76,38 @@ def test_unsupported_action_type_is_blocked():
     decision = evaluate_admissibility(action)
 
     assert decision["decision"] == "BLOCK"
+
+
+def test_low_risk_api_call_is_allowed():
+    action = {
+        "type": "call_api",
+        "endpoint": "/v1/customer/status",
+        "risk_level": "low"
+    }
+
+    decision = evaluate_admissibility(action)
+
+    assert decision["decision"] == "ALLOW"
+
+
+def test_high_risk_api_call_requires_approval():
+    action = {
+        "type": "call_api",
+        "endpoint": "/v1/payment/execute",
+        "risk_level": "high"
+    }
+
+    decision = evaluate_admissibility(action)
+
+    assert decision["decision"] == "REQUIRE_APPROVAL"
+
+
+def test_api_call_without_endpoint_is_blocked():
+    action = {
+        "type": "call_api",
+        "risk_level": "low"
+    }
+
+    decision = evaluate_admissibility(action)
+
+    assert decision["decision"] == "BLOCK"

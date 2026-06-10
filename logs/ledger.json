@@ -200,5 +200,33 @@
       "record_id": "customer-999",
       "risk_level": "high"
     }
+  },
+  {
+    "timestamp": "2026-06-10T22:33:10.531829+00:00",
+    "action_type": "call_api",
+    "recipient": null,
+    "decision": "ALLOW",
+    "reason": "API call admissible.",
+    "policy_version": "1.0",
+    "raw_action": {
+      "type": "call_api",
+      "endpoint": "/v1/customer/status",
+      "risk_level": "low",
+      "constraint_set": "default"
+    }
+  },
+  {
+    "timestamp": "2026-06-10T22:33:49.487651+00:00",
+    "action_type": "call_api",
+    "recipient": null,
+    "decision": "REQUIRE_APPROVAL",
+    "reason": "High-risk API call requires approval.",
+    "policy_version": "1.0",
+    "raw_action": {
+      "type": "call_api",
+      "endpoint": "/v1/payment/execute",
+      "risk_level": "high",
+      "constraint_set": "default"
+    }
   }
 ]

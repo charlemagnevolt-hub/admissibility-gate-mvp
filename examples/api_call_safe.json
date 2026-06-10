@@ -1,0 +1,6 @@
+{
+  "type": "call_api",
+  "endpoint": "/v1/customer/status",
+  "risk_level": "low",
+  "constraint_set": "default"
+}
