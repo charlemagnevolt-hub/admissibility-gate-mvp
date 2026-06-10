@@ -4,5 +4,6 @@
   "recipient_type": "external",
   "subject": "Missing recipient test",
   "contains_sensitive_data": false,
-  "approved_by_human": false
+  "approved_by_human": false,
+  "constraint_set": "default"
 }

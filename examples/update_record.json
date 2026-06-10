@@ -1,5 +1,6 @@
 {
   "type": "update_record",
   "record_id": "customer-123",
-  "risk_level": "low"
+  "risk_level": "low",
+  "constraint_set": "default"
 }
